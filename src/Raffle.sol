@@ -31,6 +31,8 @@ contract Raffle{
     uint256 private immutable i_entranceFee;// we use the i_ prefix for immutable variables
     address payable[] private s_players;
 
+    /**Events  */
+    event EnteredRaffle(address indexed player);
     constructor(uint256 entranceFee){
         i_entranceFee = entranceFee;
     }
@@ -42,6 +44,8 @@ contract Raffle{
         //now a good practice is to emit an event whenever we update the state of the contract
             //1. it makes migration easier
             //2. makes the front-end indexing easier.
+
+        emit EnteredRaffle(msg.sender);
 
     }
 
